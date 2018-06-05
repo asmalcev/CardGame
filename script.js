@@ -89,7 +89,7 @@ function isEnd() {
 	})
 	if (end) {
 		setTimeout(() => {
-			alert('Congratulate!');
+			alert('You did it!');
 			clearInterval(t);
 			if (confirm('Do you want to restart?')) {
 				start();

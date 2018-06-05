@@ -1,9 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Jua');
 * {
 	box-sizing: border-box;
 }
 body {
 	margin: 0;
 	padding: 0;
+	font-family: 'Jua', sans-serif;
+	color: #092109;
+	background-color: #E0F2F1;
+}
+h1 {
+	font-size: 40px;
+	font-weight: normal;
 }
 .container {
 	display: -webkit-flex;
