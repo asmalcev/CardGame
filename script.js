@@ -45,7 +45,7 @@ function openCard(card) {
 		ch1 = card.children;
 		ch1[0].style['transform'] = 'rotateY(180deg)';
 		ch1[1].style['transform'] = 'rotateY(360deg)';
-	} else if (cards.s == undefined) {
+	} else if (cards.s == undefined && card != cards.f) {
 		cards.s = card;
 		ch2 = card.children;
 		ch2[0].style['transform'] = 'rotateY(180deg)';
@@ -115,7 +115,9 @@ function countTimer() {
 }
 
 function start() {
-	colors = unColors;
+	for (let j = 0; j < 16; j++) {
+		colors[j] = unColors[j];
+	}
 	timeNow = 0;
 	document.querySelectorAll('.front').forEach(fr => {
 		fr.style['transform'] = 'rotateY(0deg)';
