@@ -20,7 +20,7 @@ const unColors = [
  '#212121',
  '#1A237E'
 ]
-var colors = [
+const unColors36x = [
  '#7986CB',
  '#FFC107',
  '#e53935',
@@ -38,6 +38,7 @@ var colors = [
  '#212121',
  '#1A237E'
 ]
+var colors = []
 
 function openCard(card) {
 	if (cards.f == undefined) {
@@ -89,11 +90,8 @@ function isEnd() {
 	})
 	if (end) {
 		setTimeout(() => {
-			alert('You did it!');
 			clearInterval(t);
-			if (confirm('Do you want to restart?')) {
-				start();
-			}
+			document.querySelector('#restart').style['display'] = 'flex';
 		}, 100)
 	}
 }
@@ -134,4 +132,13 @@ function start() {
 	randomColor();
 }
 
-start();
+function closeModal() {
+	document.querySelector('#restart').style['display'] = 'none';
+}
+
+function openMenu() {
+	document.querySelector('.block').style['display'] = 'none';
+	document.querySelector('.block').innerHTML = '<div id="return" title="Menu" onclick="openMenu();"><span></span><span></span><span></span></div>';
+	document.querySelector('.timer').style['display'] = 'none';
+	document.querySelector('.list').style['display'] = 'flex';
+}

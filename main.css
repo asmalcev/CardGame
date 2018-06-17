@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Jua');
+/*@import url('https://fonts.googleapis.com/css?family=Jua');*/
 * {
 	box-sizing: border-box;
 }
@@ -6,8 +6,6 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Jua', sans-serif;
-	color: #092109;
-	background-color: #E0F2F1;
 }
 h1 {
 	font-size: 40px;
@@ -25,12 +23,31 @@ h1 {
 	min-height: 100vh;
 	flex-direction: column;
 }
+.container-pre-loader {
+	height: 100vh;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+}
+.container-settings {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	z-index: 5;
+	transform: translateY(-100%);
+	transition: .5s;
+}
+#setting-close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+}
 .block {
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: -o-flex;
-	display: flex;
+	display: none;
 	justify-content: space-around;
 	-ms-align-items: center;
 	align-items: center;
@@ -49,6 +66,7 @@ h1 {
 }
 .timer {
 	font-size: 20px;
+	display: none;
 }
 .back, .front {
 	position: absolute;
@@ -63,12 +81,178 @@ h1 {
 	transition: .3s;
 }
 .back {
-	background-color: #333;
 	transform: rotateY(180deg);
 }
-.front {
-	background-color: #eee;
-	border: 3px #333 solid;
+.pre-loader {
+	perspective: 1000px;
+	border-top-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	transition: .4s;
+}
+.pre-loader div {
+	display: inline-block;
+	backface-visibility: hidden;
+	padding: 0px 10px;
+	animation-duration: 1s;
+	animation-name: rotY;
+	-webkit-animation-iteration-count: infinite;
+	-o-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+}
+.pre-loader div:nth-of-type(1) {
+	-webkit-animation-delay: .5s;
+	-o-animation-delay: .5s;
+	animation-delay: .5s
+}
+@keyframes rotY {
+	from {transform: rotateY(0deg);}
+	50% {transform: rotateY(180deg);}
+	to {transform: rotateY(0deg);}
+}
+.list {
+	text-align: center;
+	height: 70vh;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+	flex-direction: column;
+}
+.el {
+	cursor: pointer;
+}
+.set-el hr {
+ width: 60%;
+ margin-left: 20%;
+ height: 2px;
+ border: none;
+}
+.d-f {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+	width: 200px;
+}
+.d-f div {
+	text-align: left;
+	width: 50%;
+	height: 50px;
+	line-height: 50px;
+	cursor: pointer;
+}
+.d-f div:nth-of-type(2) {
+	text-align: right;
+}
+form input {
+	position: relative;
+	display: none;
+}
+label {
+	cursor: pointer;
+}
+#flr, #slr {
+	position: relative;
+	font-size: 26px;
+	margin-left: -100px;
+}
+#flrB, #slrB {
+	top: 2px;
+	left: 100px;
+	width: 60px;
+	height: 24px;
+	position: absolute;
+	border-radius: 28px;
+	transition: .3s;
+}
+#flrA, #slrA {
+	top: 5px;
+	left: 103px;
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	border-radius: 50%;
+	transition: .3s;
+}
+#flrA {
+	left: 139px;
+}
+#restart {
+	position: absolute;
+	display: none;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.7);
+	z-index: 20;
+	color: #333;
+}
+#restart>div {
+	background-color: #fff;
+	text-align: center;
+	width: 200px;
+	height: auto;
+	padding-bottom: 20px;
+}
+#restart>div>div>button {
+	border: none;
+	background-color: #ccc;
+	padding: 6px 20px;
+	border-radius: 1px;
+}
+#restart>div>div>button:nth-of-type(2) {
+	margin-left: 30px;
+}
+#return {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 30px;
+	height: 30px;
+	background-color: #fff;
+	border-radius: 50%;
+	cursor: pointer;
+}
+#return span {
+	width: 10px;
+	height: 2px;
+	background-color: #333;
+	position: absolute;
+	top: 14px;
+	left: 6px;
+	transform-origin: center left;
+	transform: rotate(-45deg);
+	transition: .3s;
+}
+#return span:nth-of-type(2) {
+	transform: rotate(0deg);
+	width: 16px;
+}
+#return span:nth-of-type(3) {
+	transform: rotate(45deg);
+}
+#return:hover span {
+	width: 8px;
+}
+#return:hover span:nth-of-type(2) {
+	width: 18px;
+}
+.version {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
 }
 @media (max-width: 540px) {
 	.block {

@@ -1,0 +1,40 @@
+.container-pre-loader,
+.container-settings,
+body {
+	background-color: #333;
+	color: #e5e5e5;
+}
+.back {
+	background-color: #333;
+}
+.front {
+	background-color: #aaa;
+	border: 3px #212121 solid;
+}
+.pre-loader {
+	background-color: rgba(200,200,200,0.1);
+}
+.set-el hr {
+	background-color: #fff;
+}
+#flrB {
+	background-color: #15E341;
+}
+#slrB {
+	background-color: rgba(240,240,240,0.5);
+}
+#flrA, #slrA {
+	background-color: #eee;
+}
+#flrB, #slrB {
+	border: 1px #333 solid;
+}
+.h36 {
+	color: #aaa;
+}
+.h16 {
+	color: #eee;
+}
+.version {
+	color: #999;
+}

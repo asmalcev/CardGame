@@ -6,79 +6,68 @@
 	<title>Card Game</title>
 
 	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="light-theme.css" id="link">
 </head>
 <body>
+	<div class="version"><h4>(v.2.0.0)</h4></div>
 	<div class="container">
 		<h1>Card Game</h1>
 		<div class="timer"><span>00:00</span></div>
+		<div class="list">
+			<div class="el" id="start" onclick="generate()">
+				<h2>Start</h2>
+			</div>
+			<div class="el" onclick="openBlock('.container-settings')">
+				<h2>Settings</h2>
+			</div>
+			<div class="el" onclick="window.close();">
+				<h2>Exit</h2>
+			</div>
+		</div>
 		<div class="block">
-			<!-- (.card[onclick=openCard(this)]>.front+.back)*16 -->
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
+			<div id="return" title="Menu" onclick="openMenu();">
+				<span></span>
+				<span></span>
+				<span></span>
 			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
-			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
-			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
-			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
-			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
-			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
-			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
-			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
-			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
-			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
-			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
-			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
-			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
-			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
-			</div>
-			<div class="card" onclick="openCard(this)">
-				<div class="front"></div>
-				<div class="back"></div>
+		</div>
+		<div id="restart">
+			<div>
+				<h3>Restart?</h3>
+				<div><button onclick="closeModal(); openMenu();">No</button><button onclick="closeModal(); start();">Yes</button></div>
 			</div>
 		</div>
 	</div>
-	<script src="script.js"></script>
+	<div class="container container-pre-loader">
+		<div class="pre-loader">
+			<div><h1>Card</h1></div>
+			<div><h1>Game</h1></div>
+		</div>
+	</div>
+	<div class="container container-settings">
+		<div id="setting-close" onclick="closeBlock('.container-settings')">X</div>
+		<div class="list">
+			<div class="set-el">
+				<h2>Game Field</h2>
+				<hr>
+				<div class="d-f">
+					<div onclick="changeSize(16)"><h3 class="h16">4x4</h3></div>
+					<div onclick="changeSize(36)"><h3 class="h36">6x6</h3></div>
+				</div>
+			</div>
+			<div class="set-el">
+				<h2>Theme</h2>
+				<hr>
+				<form>
+					<label id="flr" for="first-radio">Light<span id="flrB"></span><span id="flrA"></span></label><input type="radio" name="theme" id="first-radio" onclick="changeTheme('light-theme.css')">
+					<br><br>
+					<label id="slr" for="second-radio">Dark<span id="slrB"></span><span id="slrA"></span></label><input type="radio" name="theme" id="second-radio" onclick="changeTheme('dark-theme.css')">
+				</form>
+			</div>
+			<div class="set-el"></div>
+		</div>
+	</div>
+	<script src="game.js"></script>
+	<script src="start.js"></script>
 </body>
 </html>
