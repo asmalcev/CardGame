@@ -18,25 +18,28 @@ const unColors = [
  '#E91E63',
  '#4CAF50',
  '#212121',
- '#1A237E'
-]
-const unColors36x = [
- '#7986CB',
- '#FFC107',
- '#e53935',
- '#4CAF50',
- '#FF5722',
  '#1A237E',
- '#E91E63',
- '#FFC107',
- '#7986CB',
- '#212121',
- '#FF5722',
- '#e53935',
- '#E91E63',
- '#4CAF50',
- '#212121',
- '#1A237E'
+
+ '#d50000',
+ '#d50000',
+ '#18FFFF',
+ '#18FFFF',
+ '#757575',
+ '#757575',
+ '#F5F5F5',
+ '#F5F5F5',
+ '#76FF03',
+ '#76FF03',
+ '#BA68C8',
+ '#BA68C8',
+ '#5D4037',
+ '#5D4037',
+ '#4FC3F7',
+ '#4FC3F7',
+ '#2E7D32',
+ '#2E7D32',
+ '#827717',
+ '#827717'
 ]
 var colors = []
 
@@ -113,7 +116,7 @@ function countTimer() {
 }
 
 function start() {
-	for (let j = 0; j < 16; j++) {
+	for (let j = 0; j < localStorage.field; j++) {
 		colors[j] = unColors[j];
 	}
 	timeNow = 0;
