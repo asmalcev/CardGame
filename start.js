@@ -59,9 +59,11 @@ function changeSize(count) {
 	if (localStorage.field == 16) {
 		document.querySelector(`.h${localStorage.field}`).style['color'] = color1;
 		document.querySelector(`.h${localStorage.field-1+21}`).style['color'] = color2;
+		document.querySelector('.sizeattention').style['display'] = 'none';
 	} else if (localStorage.field == 36) {
 		document.querySelector(`.h${localStorage.field}`).style['color'] = color1;
 		document.querySelector(`.h${localStorage.field-20}`).style['color'] = color2;
+		document.querySelector('.sizeattention').style['display'] = 'block';
 	}
 }
 
@@ -96,4 +98,42 @@ function generate() {
 	}
 
 	start();
+}
+
+let statsBool = true, stats = {}, st = document.querySelector('#scorestable'), sizeSt = 1;
+if (localStorage.stats == undefined) {
+	statsBool = false;
+	document.querySelector('#scores').style['display'] = 'none';
+}
+else {
+	stats = JSON.parse(localStorage.stats);
+	while (stats['at' + sizeSt] != undefined) {
+		st.innerHTML += `<li class="scorename">${stats['at' + sizeSt][0]}<span class="scoretime">${stats['at' + sizeSt][1]} seconds</span></li>`;
+		sizeSt++;
+	}
+}
+
+function addStat(time,name) {
+	document.querySelector('#scores').style['display'] = 'block';
+	stats['at' + sizeSt] = [name,time];
+	let log = true;
+	while (log) {
+		log = false;
+		for (let i = 1; i < sizeSt; i++) {
+			if (stats['at' + i][1] > stats['at' + (i + 1)][1]) {
+				let k = stats['at' + (i + 1)];
+				stats['at' + (i + 1)] = stats['at' + i];
+	       stats['at' + i] = k;
+	       log = true;
+	     }
+	   }
+	 }
+	 sizeSt = 1;
+	 st.innerHTML = '';
+	 while (stats['at' + sizeSt] != undefined) {
+		st.innerHTML += `<li class="scorename">${stats['at' + sizeSt][0]}<span class="scoretime">${stats['at' + sizeSt][1]} seconds</span></li>`;
+		sizeSt++;
+	}
+	let serial = JSON.stringify(stats);
+	localStorage.stats = serial;
 }

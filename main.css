@@ -30,7 +30,7 @@ h1 {
 	left: 0;
 	top: 0;
 }
-.container-settings {
+.container-settings, .container-scoreboard {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -172,6 +172,7 @@ label {
 	position: absolute;
 	border-radius: 28px;
 	transition: .3s;
+	box-shadow: inset 3px 3px 5px rgba(0,0,0,0.4);
 }
 #flrA, #slrA {
 	top: 5px;
@@ -253,6 +254,21 @@ label {
 	position: fixed;
 	right: 20px;
 	bottom: 20px;
+}
+.scorename {
+	min-width: 30vw;
+	text-align: left;
+	position: relative;
+	padding: 5px 0;
+}
+.scoretime {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.sizeattention {
+	text-align: center;
+	margin-top: 16px;
 }
 @media (max-width: 540px) {
 	.block {

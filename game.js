@@ -1,7 +1,7 @@
-var cards = {f: undefined, s: undefined};
-var ch1,ch2;
-var timeNow = 0;
-var t;
+let cards = {f: undefined, s: undefined};
+let ch1,ch2;
+let timeNow = 0;
+let t;
 const unColors = [
  '#7986CB',
  '#FFC107',
@@ -41,7 +41,7 @@ const unColors = [
  '#827717',
  '#827717'
 ]
-var colors = []
+let colors = []
 
 function openCard(card) {
 	if (cards.f == undefined) {
@@ -95,24 +95,26 @@ function isEnd() {
 		setTimeout(() => {
 			clearInterval(t);
 			document.querySelector('#restart').style['display'] = 'flex';
+			if (localStorage.field == "16" || localStorage.field == 16)
+				addStat(timeNow, prompt("Enter your name"));
 		}, 100)
 	}
 }
 function countTimer() {
 		t = setInterval(() => {
-		timeNow++;
-		let time = document.querySelector('.timer span');
-		let s = timeNow % 60;
-		let m = Math.floor(timeNow / 60);
-		if (s > 9 && m > 9) {
-			time.innerHTML = `${m}:${s}`;
-		} else if (s < 9 && m > 9) {
-			time.innerHTML = `${m}:0${s}`;
-		} else if (s > 9 && m < 9) {
-			time.innerHTML = `0${m}:${s}`;
-		} else 
-			time.innerHTML = `0${m}:0${s}`;
-	}, 1000)
+			timeNow++;
+			let time = document.querySelector('.timer span');
+			let s = timeNow % 60;
+			let m = Math.floor(timeNow / 60);
+			if (s > 9 && m > 9) {
+				time.innerHTML = `${m}:${s}`;
+			} else if (s < 9 && m > 9) {
+				time.innerHTML = `${m}:0${s}`;
+			} else if (s > 9 && m < 9) {
+				time.innerHTML = `0${m}:${s}`;
+			} else 
+				time.innerHTML = `0${m}:0${s}`;
+		}, 1000)
 }
 
 function start() {
@@ -144,4 +146,6 @@ function openMenu() {
 	document.querySelector('.block').innerHTML = '<div id="return" title="Menu" onclick="openMenu();"><span></span><span></span><span></span></div>';
 	document.querySelector('.timer').style['display'] = 'none';
 	document.querySelector('.list').style['display'] = 'flex';
+	clearInterval(t);
+	document.querySelector('.timer span').innerHTML = '00:00';
 }
