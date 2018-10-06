@@ -10,6 +10,10 @@ let mouse = {
 function distance(x1,y1,x2,y2) {
 	return Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2))
 }
+window.addEventListener('resize', ()=>{
+	canvas.width = canvas.parentElement.clientWidth
+	canvas.height = canvas.parentElement.clientHeight
+})
 window.addEventListener('mousemove', e=>{
 	mouse.x = e.x
 	mouse.y = e.y
@@ -25,7 +29,10 @@ class point {
 	}
 	draw() {
 		c.beginPath()
-		c.fillStyle = '#FFEE58'
+		if (currentTheme == 'light-theme.css') 
+			c.fillStyle = '#FFEE58'
+		else
+			c.fillStyle = '#2196F3'
 		c.arc(this.x,this.y,this.r,0,Math.PI*2)
 		c.fill()
 		c.closePath()
@@ -37,7 +44,10 @@ class point {
 			for (let j = 0;j<points.length;j++) {
 				if (distance(this.x,this.y,points[j].x,points[j].y) < 70 && this.c < 3) {
 					c.beginPath()
-					c.strokeStyle = '#FFF176'
+					if (currentTheme == 'light-theme.css') 
+						c.strokeStyle = '#FFF176'
+					else
+						c.strokeStyle = '#2196F3'
 					c.moveTo(this.x,this.y)
 					c.lineTo(points[j].x,points[j].y)
 					c.stroke()
@@ -49,15 +59,17 @@ class point {
 		}
 		if (distance(mouse.x,mouse.y,this.x,this.y) < 150 && this.r < 3)
 			this.r += 0.2
-		else if (this.r > 0.5)
+		else if (this.r > 0.1)
 			this.r -= 0.1
+		else this.r = 0
 		this.x += this.dx
 		this.y += this.dy
 		this.draw()
 	}
 }
+let anime
 function animate() {
-	requestAnimationFrame(animate)
+	anime = requestAnimationFrame(animate)
 	c.clearRect(0,0,canvas.width,canvas.height)
 	points.forEach(p=>{p.update()})
 }

@@ -1,22 +1,22 @@
-.container-pre-loader,
+* {
+	color: #dfdfdf;
+}
 .container-settings,
+.menu-block,
 .container-scoreboard,
-body {
-	background-color: #333;
-	color: #e5e5e5;
+.container {
+	background: -webkit-linear-gradient(#212121,#000323);
+	border-bottom: 20px #0f1340 solid;
 }
-.back {
-	background-color: #333;
+.setlist {
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+	background-color: rgba(0,0,0,0.2);
 }
-.front {
-	background-color: #aaa;
-	border: 3px #212121 solid;
-}
-.pre-loader {
-	background-color: rgba(200,200,200,0.1);
+.setlist h3:hover {
+	background-color: rgba(255,255,255,0.1);
 }
 .set-el hr {
-	background-color: #fff;
+	background-color: #efefef;
 }
 #flrB {
 	background-color: #15E341;
@@ -30,12 +30,10 @@ body {
 #flrB, #slrB {
 	border: 1px #333 solid;
 }
-.h36 {
-	color: #aaa;
+.front {
+	background: -webkit-linear-gradient(-32deg,#134e79,#0d1044);
+	border: 3px #212121 solid;
 }
-.h16 {
-	color: #eee;
-}
-.version {
-	color: #999;
+.front:hover {
+	border: 3px #999 solid;
 }
