@@ -114,10 +114,11 @@ function addStat(time,name) {
 	      stats['at'+i] = k
 	      log = true
 	  	}
-	 }
-	 sizeSt = 1
-	 st.innerHTML = ''
-	 while (stats['at'+sizeSt] != undefined) {
+	}
+	if (sizeSt == 11) delete stats.at11
+	sizeSt = 1
+	st.innerHTML = ''
+	while (stats['at'+sizeSt] != undefined) {
 		st.innerHTML += `<li class="scorename">${stats['at'+sizeSt][0]}<span class="scoretime">${stats['at'+sizeSt][1]} seconds</span></li>`
 		sizeSt++
 	}
