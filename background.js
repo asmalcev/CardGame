@@ -74,7 +74,7 @@ function animate() {
 	points.forEach(p=>{p.update()})
 }
 function init() {
-	for (let i = 0;i<300;i++)
+	for (let i = 0;i<Math.floor(window.innerWidth*window.innerHeight/2000);i++)
 		points.push(new point)
 	animate()
 }
