@@ -3,22 +3,22 @@ let ch1,ch2
 let timeNow = 0
 let t
 const unColors = [
- '#512DA8',
- '#512DA8',
- '#33A4D5',
- '#33A4D5',
- '#F9A825',
- '#F9A825',
- '#E53935',
- '#E53935',
- '#4CAF50',
- '#4CAF50',
- '#FF5722',
- '#FF5722',
- '#00897B',
- '#00897B',
- '#263238',
- '#263238',
+ 'C',
+ 'C',
+ 'O',
+ 'O',
+ 'P',
+ 'P',
+ 'Q',
+ 'Q',
+ 'S',
+ 'S',
+ 'T',
+ 'T',
+ 'W',
+ 'W',
+ 'Z',
+ 'Z',
 
  '#d50000',
  '#d50000',
@@ -60,12 +60,12 @@ function randomColor() {
 	let backs = document.querySelectorAll('.back')
 	backs.forEach( b => {
 		let i = Math.floor(Math.random() * colors.length)
-		b.style['background-color'] = colors[i]
+		b.style['background-image'] = `url(pictures/${colors[i]}.svgz)`
 		colors.splice(i,1)
 	})
 }
 function isCorrect() {
-	if (ch1[1].style['background-color'] == ch2[1].style['background-color']) {
+	if (ch1[1].style['background-image'] == ch2[1].style['background-image']) {
 		cards.f.setAttribute('onclick', '')
 		cards.s.setAttribute('onclick', '')
 		cards = {f: undefined, s: undefined}
@@ -90,6 +90,7 @@ function isEnd() {
 		setTimeout(() => {
 			clearInterval(t)
 			document.querySelector('.restart').style['display'] = 'flex'
+      document.querySelector('#name').focus()
 		}, 100)
 	}
 }
@@ -105,7 +106,7 @@ function countTimer() {
 				time.innerHTML = `${m}:0${s}`
 			} else if (s > 9 && m < 9) {
 				time.innerHTML = `0${m}:${s}`
-			} else 
+			} else
 				time.innerHTML = `0${m}:0${s}`
 		}, 1000)
 }

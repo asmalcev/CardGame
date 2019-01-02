@@ -1,7 +1,7 @@
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 canvas.width = canvas.parentElement.clientWidth
-canvas.height = canvas.parentElement.clientHeight
+canvas.height = canvas.parentElement.clientHeight-20
 let points = []
 let mouse = {
 	x: undefined,
