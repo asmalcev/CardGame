@@ -60,7 +60,7 @@ function randomColor() {
 	let backs = document.querySelectorAll('.back')
 	backs.forEach( b => {
 		let i = Math.floor(Math.random() * colors.length)
-		b.style['background-image'] = `url(pictures/${colors[i]}.svgz)`
+		b.style['background-image'] = `url(pictures/${colors[i]}.svg)`
 		colors.splice(i,1)
 	})
 }
